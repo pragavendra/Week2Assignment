@@ -23,8 +23,16 @@ class IntroViewController: UIViewController,UIScrollViewDelegate {
     }
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // This method is called as the user scrolls
+    
 
-       
+    }
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+
+        
+    }
+    func scrollViewDidEndDragging(scrollView: UIScrollView,
+        willDecelerate decelerate: Bool) {
+            // This method is called right as the user lifts their finger
 
     }
 
@@ -32,6 +40,8 @@ class IntroViewController: UIViewController,UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

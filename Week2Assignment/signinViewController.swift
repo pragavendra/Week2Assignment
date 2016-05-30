@@ -20,8 +20,10 @@ class signinViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
-
-
+    @IBOutlet weak var signinNavBar: UIImageView!
+    @IBOutlet weak var fieldParentView: UIView!
+    @IBOutlet weak var onBack: UIButton!
+    
     func keyboardWillShow(notification: NSNotification!) {
         print("keyboardWillShow")
         // Move the button up above keyboard
@@ -61,13 +63,39 @@ class signinViewController: UIViewController, UIScrollViewDelegate {
 
     }
     
+
+    // The main view is about to appear...
+    override func viewWillAppear(animated: Bool) {
+        // Set initial transform values 20% of original size
+        let transform = CGAffineTransformMakeScale(0.2, 0.2)
+        // Applye the transform properties of the views
+        signinNavBar.transform = transform
+        fieldParentView.transform = transform
+        // Set the alpha properties of the views to transparent
+        signinNavBar.alpha = 0
+        fieldParentView.alpha = 0
+    }
+    // The main view appeared...
+    override func viewDidAppear(animated: Bool) {
+        //Animate the code within over 0.3 seconds...
+        UIView.animateWithDuration(0.8) { () -> Void in
+            // Return the views transform properties to their default states.
+            self.fieldParentView.transform = CGAffineTransformIdentity
+            self.signinNavBar.transform = CGAffineTransformIdentity
+            // Set the alpha properties of the views to fully opaque
+            self.fieldParentView.alpha = 1
+            self.signinNavBar.alpha = 1
+        }
+    }
+    
+  
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation
